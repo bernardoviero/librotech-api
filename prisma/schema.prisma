@@ -1,0 +1,45 @@
+model Livro {
+  id             Int       @id @default(autoincrement())
+  titulo         String
+  genero         String?
+  dataPublicacao DateTime?
+  autor          Autor     @relation(fields: [autorId], references: [id])
+  autorId        Int
+  emprestimos    Emprestimo[]   // Adiciona campo de relação oposta
+}
+
+model Autor {
+  id     Int      @id @default(autoincrement())
+  nome   String
+  livros Livro[]  // Adiciona campo de relação oposta
+}
+
+model Usuario {
+  id            Int       @id @default(autoincrement())
+  nome          String
+  email         String    @unique
+  senha         String
+  dataCadastro  DateTime  @default(now())
+  emprestimos   Emprestimo[]  // Adiciona campo de relação oposta
+}
+
+model Emprestimo {
+  id              Int       @id @default(autoincrement())
+  livro           Livro     @relation(fields: [livroId], references: [id])
+  livroId         Int
+  usuario         Usuario   @relation(fields: [usuarioId], references: [id])
+  usuarioId       Int
+  dataEmprestimo  DateTime
+  dataDevolucao   DateTime?
+  dataDevolvido   DateTime?
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Define a fonte de dados MySQL
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
