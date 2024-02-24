@@ -5,13 +5,13 @@ model Livro {
   dataPublicacao DateTime?
   autor          Autor     @relation(fields: [autorId], references: [id])
   autorId        Int
-  emprestimos    Emprestimo[]   // Adiciona campo de relação oposta
+  emprestimos    Emprestimo[]  
 }
 
 model Autor {
   id     Int      @id @default(autoincrement())
   nome   String
-  livros Livro[]  // Adiciona campo de relação oposta
+  livros Livro[] 
 }
 
 model Usuario {
@@ -38,7 +38,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// Define a fonte de dados MySQL
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
