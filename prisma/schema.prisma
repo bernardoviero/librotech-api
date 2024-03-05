@@ -1,21 +1,11 @@
-model Livro {
-  id             Int       @id @default(autoincrement())
-  titulo         String
-  genero         String?
-  dataPublicacao DateTime?
-  autor          Autor     @relation(fields: [autorId], references: [id])
-  autorId        Int
-  emprestimos    Emprestimo[]  
-}
-
 model Autor {
-  id     Int      @id @default(autoincrement())
+  id     String      @id
   nome   String
   livros Livro[] 
 }
 
 model Usuario {
-  id            Int       @id @default(autoincrement())
+  id            String       @id
   nome          String
   email         String    @unique
   senha         String
@@ -23,12 +13,22 @@ model Usuario {
   emprestimos   Emprestimo[]  // Adiciona campo de relação oposta
 }
 
+model Livro {
+  id             String       @id
+  titulo         String
+  genero         String?
+  dataPublicacao DateTime?
+  autor          Autor     @relation(fields: [autorId], references: [id])
+  autorId        String     // Alterado para String
+  emprestimos    Emprestimo[]  
+}
+
 model Emprestimo {
-  id              Int       @id @default(autoincrement())
+  id              String       @id
   livro           Livro     @relation(fields: [livroId], references: [id])
-  livroId         Int
+  livroId         String     // Alterado para String
   usuario         Usuario   @relation(fields: [usuarioId], references: [id])
-  usuarioId       Int
+  usuarioId       String     // Alterado para String
   dataEmprestimo  DateTime
   dataDevolucao   DateTime?
   dataDevolvido   DateTime?
