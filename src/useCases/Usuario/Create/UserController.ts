@@ -7,13 +7,14 @@ export class UserController {
   ) { }
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { nome, email, senha } = request.body;
+    const { nome, email, senha, ativo } = request.body;
 
     try {
       await this.UserUseCase.execute({
         nome,
         email,
-        senha
+        senha,
+        ativo: true
       })
       return response.status(201).send();
     } catch (err: any) {

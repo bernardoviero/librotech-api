@@ -1,7 +1,8 @@
 model Autor {
   id     String      @id
   nome   String
-  livros Livro[] 
+  livros Livro[]
+  ativo         Boolean    @default(true)
 }
 
 model Usuario {
@@ -11,6 +12,7 @@ model Usuario {
   senha         String
   dataCadastro  DateTime  @default(now())
   emprestimos   Emprestimo[]  // Adiciona campo de relação oposta
+  ativo         Boolean    @default(true)
 }
 
 model Livro {
@@ -21,6 +23,7 @@ model Livro {
   autor          Autor     @relation(fields: [autorId], references: [id])
   autorId        String     // Alterado para String
   emprestimos    Emprestimo[]  
+  ativo         Boolean    @default(true)
 }
 
 model Emprestimo {
@@ -32,6 +35,7 @@ model Emprestimo {
   dataEmprestimo  DateTime
   dataDevolucao   DateTime?
   dataDevolvido   DateTime?
+  ativo         Boolean    @default(true)
 }
 
 generator client {

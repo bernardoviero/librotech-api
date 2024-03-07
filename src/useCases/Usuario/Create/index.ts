@@ -7,12 +7,12 @@ const prismaUsersRepository = new PrismaUsersRepository
 const encryptPassword = new EncryptPassword
 
 const userUseCase = new UserUseCase(
-    prismaUsersRepository,
-    encryptPassword
+  prismaUsersRepository,
+  encryptPassword
 )
 
 const userController = new UserController(
-    userUseCase
+  userUseCase
 )
 
 export { userUseCase, userController }

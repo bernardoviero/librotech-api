@@ -1,5 +1,6 @@
 export interface IUserRequestDTO {
-    nome: string,
-    email: string,
-    senha: string
+  nome: string,
+  email: string,
+  senha: string,
+  ativo: boolean
 }
