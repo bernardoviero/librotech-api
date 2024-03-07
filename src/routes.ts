@@ -1,10 +1,15 @@
 import { Router } from 'express';
-import { userController } from './useCases/Usuario/Create';
+import { createUserController } from './useCases/Usuario/Create';
+import { disableUserController } from './useCases/Usuario/Disable';
 
 const router: Router = Router();
 
-router.post('/api/users', (request, response) => {
-    return userController.handle(request, response);
+router.post('/api/user', (request, response) => {
+    return createUserController.handle(request, response);
+});
+
+router.put('/api/disable/user', (request, response) => {
+    return disableUserController.handle(request, response);
 });
 
 export const indexRoute: Router = router;
