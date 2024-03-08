@@ -7,12 +7,13 @@ export class UserController {
   ) { }
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { id, email } = request.body;
+    const { id, email, token } = request.body;
 
     try {
       await this.UserUseCase.execute({
         id,
         email,
+        token,
         ativo: false
       })
       return response.status(201).send();
