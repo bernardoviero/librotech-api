@@ -1,3 +1,7 @@
 DATABASE_URL = "mysql://user:password@localhost:port/dbname"
 CHAVE_JWT = chavejwt
 PEPPER=suaPalavraChaveAqui
+MAILTRAP_HOST=seu_host_smtp
+MAILTRAP_PORT=sua_porta_smtp
+MAILTRAP_USER=seu_usuario_smtp
+MAILTRAP_PASS=sua_senha_smtp
