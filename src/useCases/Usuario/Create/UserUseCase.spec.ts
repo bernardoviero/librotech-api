@@ -10,9 +10,8 @@ describe('UserUseCase', () => {
 
   beforeEach(() => {
 
-
     mockUsersRepository = {
-      findByEmail: jest.fn(),
+      findUserByEmail: jest.fn(),
       save: jest.fn(),
     };
 

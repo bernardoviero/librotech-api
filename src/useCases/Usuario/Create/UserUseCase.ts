@@ -20,6 +20,6 @@ export class UserUseCase {
     const password = await this.passwordProvider.encryptPassword(data.senha);
     user.senha = password;
 
-    await this.usersRepository.save(user)
+    const newUser = await this.usersRepository.save(user)
   }
 }
