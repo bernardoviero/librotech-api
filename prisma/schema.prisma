@@ -5,15 +5,6 @@ model Autores {
   ativo         Boolean    @default(true)
 }
 
-model Emails {
-  id            String     @id
-  code          String
-  usuario       Usuarios   @relation(fields: [usuarioId], references: [id])
-  usuarioId     String
-  dataCadastro  DateTime   @default(now())
-  ativo         Boolean    @default(true)
-}
-
 model Usuarios {
   id            String       @id
   nome          String
@@ -21,7 +12,6 @@ model Usuarios {
   senha         String
   dataCadastro  DateTime  @default(now())
   emprestimos   Emprestimos[]  // Adiciona campo de relação oposta
-  emails        Emails[]  // Adiciona campo de relação oposta
   ativo         Boolean    @default(true)
 }
 
