@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { AuthorUseCase } from "./AuthorUseCase";
 
-export class UserController {
+export class AuthorController {
   constructor(
     private authorUseCase: AuthorUseCase,
   ) { }
