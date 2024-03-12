@@ -9,7 +9,6 @@ const tokenJWT = new TokenJWT;
 const userUseCase = new UserUseCase(
     prismaUsersRepository,
     tokenJWT
-
 )
 
 const disableUserController = new UserController(

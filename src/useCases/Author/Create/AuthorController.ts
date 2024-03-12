@@ -1,22 +1,21 @@
 import { Request, Response } from "express";
-import { UserUseCase } from "./UserUseCase";
+import { AuthorUseCase } from "./AuthorUseCase";
 
 export class UserController {
   constructor(
-    private UserUseCase: UserUseCase,
+    private authorUseCase: AuthorUseCase,
   ) { }
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { id, email, token } = request.body;
+    const { name, nationality } = request.body;
 
     try {
-      await this.UserUseCase.execute({
-        id,
-        email,
-        token,
-        active: false
+      const newAuthor = await this.authorUseCase.execute({
+        name,
+        nationality,
+        active: true
       })
-      return response.status(201).send();
+      return response.status(201).send(newAuthor);
     } catch (err: any) {
       return response.status(400).json({
         message: err.message || 'Unexpected error.'

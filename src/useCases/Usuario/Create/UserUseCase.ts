@@ -17,8 +17,8 @@ export class UserUseCase {
     }
 
     const user = new User(data);
-    const password = await this.passwordProvider.encryptPassword(data.senha);
-    user.senha = password;
+    const password = await this.passwordProvider.encryptPassword(data.password);
+    user.password = password;
 
     const newUser = await this.usersRepository.save(user)
   }

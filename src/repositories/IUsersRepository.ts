@@ -5,6 +5,6 @@ export interface IUsersRepository {
   findUserByEmail(email: string): Promise<User | null>;
   findUserById(id: string): Promise<User | null>;
   save(user: User): Promise<User>;
-  disable(ativo: boolean, userId: string): Promise<void>;
+  disable(active: boolean, userId: string): Promise<void>;
   update(user: IUserRequestDTO): Promise<User>;
 }

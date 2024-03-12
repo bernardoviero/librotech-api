@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 export class PrismaUsersRepository implements IUsersRepository {
 
   async findUserById(id: string): Promise<User | null> {
-    const user = await prisma.usuarios.findUnique({
+    const user = await prisma.users.findUnique({
       where: {
         id: id,
       },
@@ -18,13 +18,13 @@ export class PrismaUsersRepository implements IUsersRepository {
   }
 
   async update(updateUser: IUserRequestDTO): Promise<User> {
-    const user = await prisma.usuarios.update({
+    const user = await prisma.users.update({
       where: {
         id: updateUser.id,
       },
       data: {
         id: updateUser.id,
-        nome: updateUser.nome,
+        name: updateUser.name,
         email: updateUser.email
       }
     });
@@ -32,19 +32,19 @@ export class PrismaUsersRepository implements IUsersRepository {
     return user;
   }
 
-  async disable(ativo: boolean, userId: string): Promise<void> {
-    await prisma.usuarios.update({
+  async disable(active: boolean, userId: string): Promise<void> {
+    await prisma.users.update({
       where: {
         id: userId,
       },
       data: {
-        ativo: ativo,
+        active: active,
       }
     });
   }
 
   async findUserByEmail(email: string): Promise<User | null> {
-    const user = await prisma.usuarios.findUnique({
+    const user = await prisma.users.findUnique({
       where: {
         email: email,
       },
@@ -54,13 +54,13 @@ export class PrismaUsersRepository implements IUsersRepository {
   }
 
   async save(user: User): Promise<User> {
-    await prisma.usuarios.create({
+    await prisma.users.create({
       data: {
         id: user.id,
-        nome: user.nome,
+        name: user.name,
         email: user.email,
-        senha: user.senha,
-        ativo: user.ativo
+        password: user.password,
+        active: user.active
       },
     });
 

@@ -7,14 +7,14 @@ export class UserController {
   ) { }
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { id, token, email, nome } = request.body;
+    const { id, token, email, name } = request.body;
 
     try {
       const userUpdate = await this.UserUseCase.execute({
         id,
         email,
         token,
-        nome
+        name
       })
       return response.status(201).send(userUpdate);
     } catch (err: any) {

@@ -19,6 +19,6 @@ export class UserUseCase {
       throw new Error('Invalid token.');
     }
 
-    await this.usersRepository.disable(data.ativo, user.id)
+    await this.usersRepository.disable(data.active, user.id)
   }
 }

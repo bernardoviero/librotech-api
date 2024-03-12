@@ -3,16 +3,16 @@ import { v4 as uuidv4 } from 'uuid';
 export class User {
   public readonly id!: string;
 
-  public nome: string;
+  public name: string;
   public email: string;
-  public senha: string;
-  public ativo: boolean;
+  public password: string;
+  public active: boolean;
 
   constructor(props: Omit<User, 'id'>, id?: string) {
-    this.nome = props.nome;
+    this.name = props.name;
     this.email = props.email;
-    this.senha = props.senha;
-    this.ativo = props.ativo;
+    this.password = props.password;
+    this.active = props.active;
 
     if (!id) {
       this.id = uuidv4();
